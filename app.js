@@ -1,17 +1,25 @@
+// Importation des packages
 const express = require('express');
 const mongoose = require('mongoose');
-const router = express.Router();
 const path = require('path');
+
+// Création d'un routeur express
+const router = express.Router();
+
+// On charge les variables d'environnement
 const dotenv = require("dotenv");
 dotenv.config();
 
+// On importe les routeurs
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 // const User = require('./models/User');
 // const Sauce = require('./models/Sauce');
 
+// On accède aux variables d'environnement
 const MY_PORT = process.env.PORT;
 const MY_APP_SECRET = process.env.APP_SECRET;
+// On se connecte à la base de données avec mongoose
 mongoose.connect(MY_APP_SECRET,
     { useNewUrlParser: true,
         useUnifiedTopology: true })
@@ -20,6 +28,7 @@ mongoose.connect(MY_APP_SECRET,
         
 const app = express();
 
+// Ajout de headers à l'objet response
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -29,6 +38,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+// On enregistrer les routeurs
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);

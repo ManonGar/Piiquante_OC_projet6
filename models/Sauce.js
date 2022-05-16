@@ -14,4 +14,5 @@ const sauceSchema = mongoose.Schema({
     usersDisliked: { type: Array, required: false, default:[] },
 });
 
+// On exporte le schéma en tant que modèle Mongoose, on le rend ainsi disponible pour notre application express
 module.exports = mongoose.model('Sauce', sauceSchema);
