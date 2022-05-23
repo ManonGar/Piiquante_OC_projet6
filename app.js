@@ -2,10 +2,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const helmet = require('helmet');
 
 // Création d'un routeur express
 const router = express.Router();
-
 
 // On importe les routeurs
 const userRoutes = require('./routes/user');
@@ -27,6 +27,9 @@ mongoose.connect(MY_APP_SECRET,
         
 const app = express();
 
+// sécurisation de l'app avec helmet (http headers)
+app.use(helmet());
+
 // Ajout de headers à l'objet response
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -38,7 +41,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// On enregistrer les routeurs
+// On enregistre les routeurs
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);

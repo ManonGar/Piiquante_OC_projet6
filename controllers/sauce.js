@@ -88,11 +88,11 @@ exports.likeSauce = (req, res, next) => {
           if (sauce.usersLiked.includes(req.body.userId)) {
             Sauce.updateOne(
               { _id: req.params.id },
-              // On retire l'id de l'utilisateur du tableau usersLiked 
+              // On retire l'id de l'utilisateur du tableau usersLiked et on incrémente de -1
               { $pull: { usersLiked: req.body.userId }, $inc: { likes: -1 } }
             )
               .then(() =>
-                res.status(200).json({ message: 'like annulé !' })
+                res.status(200).json({ message: 'Like supprimé !' })
               )
               .catch((error) => res.status(400).json({ error }));
           }
@@ -100,11 +100,11 @@ exports.likeSauce = (req, res, next) => {
           if (sauce.usersDisliked.includes(req.body.userId)) {
             Sauce.updateOne(
               { _id: req.params.id },
-              // On retire l'id de l'utilisateur du tableau usersDisliked 
+              // On retire l'id de l'utilisateur du tableau usersDisliked et on incrémente de -1
               { $pull: { usersDisliked: req.body.userId }, $inc: { dislikes: -1 } }
             )
               .then(() =>
-                res.status(200).json({ message: 'Dislike annulé !' })
+                res.status(200).json({ message: 'Dislike supprimé !' })
               )
               .catch((error) => res.status(400).json({ error }));
           }
