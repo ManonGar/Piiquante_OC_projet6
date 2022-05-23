@@ -6,15 +6,14 @@ const path = require('path');
 // Création d'un routeur express
 const router = express.Router();
 
-// On charge les variables d'environnement
-const dotenv = require("dotenv");
-dotenv.config();
 
 // On importe les routeurs
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
-// const User = require('./models/User');
-// const Sauce = require('./models/Sauce');
+
+// On charge les variables d'environnement
+const dotenv = require("dotenv");
+dotenv.config();
 
 // On accède aux variables d'environnement
 const MY_PORT = process.env.PORT;
@@ -35,6 +34,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+
 
 app.use(express.json());
 
