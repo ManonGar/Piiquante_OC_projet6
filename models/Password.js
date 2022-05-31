@@ -11,5 +11,4 @@ pswdSchema
     .has().not().spaces()
     .is().not().oneOf(['1Aaaaaaa','2Bbbbbbb'])
 
-// EXPORT
 module.exports = pswdSchema;
