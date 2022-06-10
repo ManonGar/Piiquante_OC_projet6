@@ -2,7 +2,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-// const helmet = require('helmet');
 
 // Création d'un routeur express
 const router = express.Router();
@@ -27,22 +26,7 @@ mongoose.connect(MY_APP_SECRET,
         
 const app = express();
 
-// sécurisation de l'app avec helmet (http headers)
-
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         defaultSrc: [
-//           "'self'",
-//           'data:',
-//         ],
-//       },
-//     },
-//   })
-// )
-
-// Ajout de headers à l'objet response
+// On ajoute des headers à l'objet response
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');

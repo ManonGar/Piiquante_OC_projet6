@@ -1,7 +1,9 @@
 const Sauce = require('../models/sauce');
 const fs = require('fs');
 
-// création des différentes logiques pour les routes sauce
+// Création des différentes logiques pour les routes sauce 
+// (create, getOne, modify, delete, getAll, like)
+
 exports.createSauce = (req, res, next) => {
 const sauceObject = JSON.parse(req.body.sauce);
 delete sauceObject._id;

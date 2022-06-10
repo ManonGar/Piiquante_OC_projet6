@@ -1,7 +1,8 @@
+// Importation d'express et création d'un routeur express
 const express = require('express');
-// Création d'un routeur express
 const router = express.Router();
 
+// On importe les middlewares
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
