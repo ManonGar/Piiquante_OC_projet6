@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// On crée un schéma de données avec les champs requis pour une sauce
 const sauceSchema = mongoose.Schema({
     userId: { type: String, required: true },
     name: { type: String, required: true },
